@@ -1,0 +1,17 @@
+language: node_js
+dist: trusty
+node_js:
+  - 6
+  - 8
+script:
+  - node --version
+  - yarn --version
+  - yarn run flow
+  - yarn run lint
+notifications:
+  email:
+    on_failure: change
+cache:
+  yarn: true
+  directories:
+    - node_modules

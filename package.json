@@ -1,0 +1,148 @@
+{
+  "name": "react-midi-device-provider",
+  "description": "web midi utilities for react",
+  "author": "halvves <hi@halvves.com> (https://halvves.com/)",
+  "license": "MIT",
+  "homepage": "https://github.com/halvves/react-midi-device-provider",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/halvves/react-midi-device-provider.git"
+  },
+  "bugs": {
+    "url": "https://github.com/halvves/react-midi-device-provider/issues"
+  },
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "npm run build:lib",
+    "prebuild:lib": "rimraf lib/*",
+    "build:lib": "babel --out-dir lib --ignore \"*.test.js\" src",
+    "precommit": "lint-staged",
+    "flow": "flow check",
+    "flow:watch": "flow-watch",
+    "lint": "eslint src",
+    "prepublish": "npm run build",
+    "pretty": "prettier --write",
+    "pretty-all": "npm run pretty -- \"src/**/*.js\" && npm run pretty-pkg",
+    "pretty-pkg": "prettier-package-json --write ./package.json"
+  },
+  "dependencies": {
+    "hoist-non-react-statics": "^2.3.1",
+    "prop-types": "^15.6.0"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-flow-react-proptypes": "^8.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.7.0",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-flowtype-errors": "^3.3.5",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "flow-bin": "^0.58.0",
+    "flow-watch": "^1.1.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.3.0",
+    "prettier": "^1.7.4",
+    "prettier-package-json": "^1.4.0",
+    "react": "^16.0.0"
+  },
+  "keywords": [
+    "midi",
+    "react"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "loose": true
+        }
+      ],
+      "react"
+    ],
+    "plugins": [
+      "flow-react-proptypes",
+      "add-module-exports",
+      "transform-export-extensions",
+      "transform-flow-strip-types",
+      "transform-object-rest-spread",
+      "transform-class-properties"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "airbnb",
+      "plugin:flowtype/recommended",
+      "prettier",
+      "prettier/react",
+      "prettier/flowtype"
+    ],
+    "plugins": [
+      "flowtype",
+      "flowtype-errors"
+    ],
+    "rules": {
+      "arrow-parens": [
+        "error",
+        "as-needed"
+      ],
+      "no-console": [
+        "warn",
+        {
+          "allow": [
+            "warn",
+            "error"
+          ]
+        }
+      ],
+      "react/jsx-filename-extension": 0
+    },
+    "env": {
+      "browser": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 7,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "impliedStrict": true,
+        "jsx": true,
+        "experimentalObjectRestSpread": true
+      }
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "npm run pretty --",
+      "git add"
+    ],
+    "package.json": [
+      "prettier-package-json --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5"
+  }
+}

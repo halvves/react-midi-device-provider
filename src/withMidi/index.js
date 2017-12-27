@@ -1,0 +1,1 @@
+export withMidi from './withMidi';
